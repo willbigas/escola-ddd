@@ -1,3 +1,5 @@
+package br.com.alura.escola.aluno;
+
 public class Email {
 
     private String endereco;
