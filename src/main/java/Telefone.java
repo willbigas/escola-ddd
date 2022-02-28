@@ -5,10 +5,24 @@ public class Telefone {
 
 
     public Telefone(String ddd, String numero) {
-        if (ddd.length() > 2 || numero.length() > 9) {
-            throw new IllegalArgumentException("DDD ou Número contem quantidade de digitos inválidos (2) DDD , (9) Número!");
+        if (ddd == null || numero == null) {
+            throw new IllegalArgumentException("DDD e Número são obrigatórios");
+        }
+        if (!ddd.matches("\\d{2}")) {
+            throw new IllegalArgumentException("DDD invalido!");
+        }
+        if (!numero.matches("\\d{8}|\\d{9}")) {
+            throw new IllegalArgumentException("Numero invalido!");
         }
         this.ddd = ddd;
         this.numero = numero;
+    }
+
+    public String getDdd() {
+        return ddd;
+    }
+
+    public String getNumero() {
+        return numero;
     }
 }
