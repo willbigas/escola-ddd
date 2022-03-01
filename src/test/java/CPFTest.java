@@ -1,4 +1,4 @@
-import br.com.alura.escola.aluno.CPF;
+import br.com.alura.escola.dominio.aluno.CPF;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
