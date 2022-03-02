@@ -1,7 +1,9 @@
 package br.com.alura.escola.aplicacao.aluno.matricular;
 
+import br.com.alura.escola.dominio.PublicadorDeEventos;
 import br.com.alura.escola.dominio.aluno.Aluno;
 import br.com.alura.escola.dominio.aluno.CPF;
+import br.com.alura.escola.dominio.aluno.LogDeAlunoMatriculado;
 import br.com.alura.escola.infra.aluno.RepositorioDeAlunosEmMemoria;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +14,10 @@ class MatriculadorDeAlunoTest {
     @Test
     void alunoDeveriaSerPersistido() {
         RepositorioDeAlunosEmMemoria repositorio = new RepositorioDeAlunosEmMemoria();
-        MatriculadorDeAluno matriculador = new MatriculadorDeAluno(repositorio);
+        PublicadorDeEventos publicador = new PublicadorDeEventos();
+        publicador.adicionar(new LogDeAlunoMatriculado());
+
+        MatriculadorDeAluno matriculador = new MatriculadorDeAluno(repositorio, publicador);
 
         DadosDoAlunoDTO dados = new DadosDoAlunoDTO(
                 "Fulano"
